@@ -1,6 +1,9 @@
 package com.example.demo.controller;
 
+import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,7 +19,6 @@ import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 
 @CrossOrigin(origins = "*")
-
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -24,10 +26,24 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/{id}")
-    public User getUser(@PathVariable Long id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+    // GET http://localhost:2005/api/users
+    @GetMapping
+    public List<Map<String, Object>> getAllUsers() {
+        return userRepository.findAll().stream()
+                .map(u -> {
+                    Map<String, Object> m = new HashMap<>();
+                    m.put("id", u.getId());
+                    m.put("name", u.getName());
+                    m.put("email", u.getEmail());
+                    return m;
+                })
+                .collect(Collectors.toList());
+    }
+
+    // optional: GET http://localhost:2005/api/users/all
+    @GetMapping("/all")
+    public List<Map<String, Object>> getAllUsersAlt() {
+        return getAllUsers();
     }
 
     @PutMapping("/{id}")
@@ -41,6 +57,7 @@ public class UserController {
             user.setEmail(updates.get("email"));
         if (updates.containsKey("password") && !updates.get("password").isEmpty()) {
             String hashed = new BCryptPasswordEncoder().encode(updates.get("password"));
+            // change this to the actual setter in your User entity
             user.setPasswordHash(hashed);
         }
 

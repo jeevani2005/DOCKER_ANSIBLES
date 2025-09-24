@@ -16,7 +16,13 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 // allow unauthenticated access to auth + CRUD endpoints for development
                 .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/api/savings/**", "/api/incomes/**", "/api/expenses/**", "/api/alerts/**").permitAll()
+                .requestMatchers(
+                        "/api/savings", "/api/savings/**",
+                        "/api/incomes", "/api/incomes/**",
+                        "/api/users", "/api/users/**",
+                        "/api/expenses", "/api/expenses/**",
+                        "/api/alerts", "/api/alerts/**")
+                .permitAll()
                 // keep other endpoints authenticated if present
                 .anyRequest().authenticated();
 

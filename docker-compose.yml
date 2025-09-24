@@ -1,81 +1,42 @@
 
 services:
-  budget-mysqldb:
-    container_name: budget-mysql
+  mysqldb:
     image: mysql:8
+    container_name: mysql-db
     environment:
-      MYSQL_ROOT_PASSWORD: 32939
+      MYSQL_ROOT_PASSWORD: docker
       MYSQL_DATABASE: budgetplannerdb
     ports:
       - "3307:3306"
     volumes:
-      - mysql-data:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
+    networks:
+      - springboot-mysql-net
 
-  budget-backend:
-    container_name: budget-backend
-    build:
-      context: ./Backend/budgetplanner
-      dockerfile: ../../BUDGET-FULLSTACK/backend.Dockerfile
+  backend:
+    image: bhargavi079/docker-budgetpbackend:latest
+    container_name: springboot
     ports:
       - "2005:2005"
     depends_on:
-      - budget-mysqldb
+      - mysqldb
     restart: on-failure
+    networks:
+      - springboot-mysql-net
 
-  budget-frontend:
-    container_name: budget-frontend
-    build:
-      context: ./Frontend/frontend
-      dockerfile: ../../BUDGET-FULLSTACK/frontend.Dockerfile
+  frontend:
+    image: bhargavi079/docker-budgetpfrontend:latest
+    container_name: react
     ports:
       - "3000:80"
     depends_on:
-      - budget-backend
+      - backend
+    restart: on-failure
+    networks:
+      - springboot-mysql-net
 
 volumes:
-  mysql-data:
+  mysql_data:
 
-
-
-
-# services:
-#   mysqldb:
-#     image: mysql:8
-#     container_name: mysql-db
-#     environment:
-#       MYSQL_ROOT_PASSWORD: docker
-#       MYSQL_DATABASE: klustudentdb
-#     ports:
-#       - "3307:3306"
-#     volumes:
-#       - mysql_data:/var/lib/mysql
-#     networks:
-#       - springboot-mysql-net
-
-#   backend:
-#     image: bhargavi079/docker-budgetbackend:latest
-#     container_name: springboot
-#     ports:
-#       - "2005:2005"
-#     depends_on:
-#       - mysqldb
-#     restart: on-failure
-#     networks:
-#       - springboot-mysql-net
-
-#   frontend:
-#     image: bhargavi079/docker-budgetfrontend:latest
-#     container_name: react
-#     ports:
-#       - "3000:80"
-#     depends_on:
-#       - backend
-#     restart: on-failure
-#     networks:
-#       - springboot-mysql-net
-
-# volumes:
-#   mysql_data:
-
-# networks:
-#   springboot-mysql-net:
+networks:
+  springboot-mysql-net:

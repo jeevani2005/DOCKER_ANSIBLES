@@ -29,7 +29,7 @@ jobs:
           context: ./Backend/budgetplanner
           file: ./Backend/backend.Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ansible-backend:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/ansible-backend:latest
 
       - name: Build and push frontend image
         uses: docker/build-push-action@v5
@@ -37,4 +37,4 @@ jobs:
           context: ./Frontend/frontend
           file: ./Frontend/frontend/frontend.Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ansible-frontend:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/ansible-frontend:latest

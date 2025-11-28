@@ -30,7 +30,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const categories = ["Rent", "Food", "Transport", "Entertainment", "Utilities", "Other"];
+const categories = ["Rent", "Food", "Transport", "Entertainment", "Utilities", "Healthcare","Education" "Other"];
 
 // Pie chart colors
 const COLORS = ["#8884d8", "#82ca9d", "#ffc658", "#ff7f50", "#00c49f", "#d0ed57"];

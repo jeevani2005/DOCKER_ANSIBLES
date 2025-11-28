@@ -57,7 +57,7 @@ export default function Income() {
 
   return (
     <div className="income-container">
-      <h2 className="income-title">💰 Income Tracker</h2>
+      <h2 className="income-title">💰 Income tracker</h2>
 
       <div className="income-form">
         <input

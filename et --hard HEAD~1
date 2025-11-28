@@ -1,0 +1,35 @@
+[33me010b21[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev1[m[33m, [m[1;31morigin/dev1[m[33m)[m Merge branch 'dev1' of https://github.com/jeevani2005/DOCKER_ANSIBLES into dev1
+[33m22b0455[m New commit message
+[33m3af7f58[m added files
+[33mf6f9b15[m Update Docker image tags for backend and frontend
+[33mdbf2539[m Update Docker Hub username in workflow file
+[33m3118395[m Update docker-image.yml
+[33mc050c56[m Refactor Docker CI workflow for fullstack build and push
+[33mfccb99a[m created files
+[33mc6cfcb6[m deleted null file
+[33m3dc343e[m Create docker-image.yml
+[33m87e8da4[m updated
+[33mdf6edc1[m updated
+[33ma964cfb[m updated
+[33m79d8527[m updated
+[33m1c8364a[m updated
+[33m67964a9[m updated
+[33m0dafca8[m updated
+[33m533e6c0[m updated files
+[33mbfb15d9[m updated
+[33m8abb635[m updated
+[33mee886e4[m updated
+[33m2a59ccf[m updated
+[33md7acd65[m updated
+[33mb954dfb[m updated
+[33mcad694b[m updated
+[33me702173[m updated files
+[33m704a0b9[m updated
+[33mcf530a2[m updated files
+[33m788cdd2[m updated files
+[33ma6c93b3[m updated files
+[33m19bc7dd[m yml file
+[33mfb2b5ff[m updated application.prooperties
+[33mef08ce3[m updated docker-compose.yml
+[33me294a37[m updated application properties
+[33m80d6e4d[m docker projectv1.0
